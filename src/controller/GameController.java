@@ -2,6 +2,7 @@ package controller;
 
 import model.Direction;
 import model.MapMatrix;
+import view.game.Box;
 import view.game.GamePanel;
 import view.game.GridComponent;
 import view.game.Hero;
@@ -27,9 +28,10 @@ public class GameController {
     public boolean doMove(int row, int col, Direction direction) {
         GridComponent currentGrid = view.getGridComponent(row, col);
         //target row can column.
-        int tRow = row + direction.getRow();
-        int tCol = col + direction.getCol();
+        int tRow = row + direction.getRow();int ttRow = row + 2*direction.getRow();
+        int tCol = col + direction.getCol();int ttCol = col + 2*direction.getCol();
         GridComponent targetGrid = view.getGridComponent(tRow, tCol);
+        GridComponent ttargetGrid = view.getGridComponent(ttRow, ttCol);
         int[][] map = model.getMatrix();
         if (map[tRow][tCol] == 0 || map[tRow][tCol] == 2) {
             //update hero in MapMatrix
@@ -42,6 +44,24 @@ public class GameController {
             h.setRow(tRow);
             h.setCol(tCol);
             return true;
+        }else if(map[tRow][tCol] == 10 || map[tRow][tCol] == 12){
+            if(map[ttRow][ttCol] == 0
+            || map[ttRow][ttCol] == 2){
+                //update hero and box in MapMatrix
+                model.getMatrix()[row][col] -= 20;
+                model.getMatrix()[tRow][tCol] += 10;
+                model.getMatrix()[ttRow][ttCol] += 10;
+                //Update hero and box in GamePanel
+                Hero h = currentGrid.removeHeroFromGrid();
+                targetGrid.setHeroInGrid(h);
+                h.setRow(tRow);
+                h.setCol(tCol);
+                Box b = targetGrid.removeBoxFromGrid();
+                b.setRow(ttRow);
+                b.setCol(ttCol);
+                ttargetGrid.setBoxInGrid(b);
+                return true;
+            }
         }
         return false;
     }

@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class Box extends JComponent {
     private final int value = 10;
+    private int row;
+    private int col;
 
     public Box(int width, int height) {
         this.setSize(width, height);
@@ -21,6 +23,15 @@ public class Box extends JComponent {
 
     public int getValue() {
         return value;
+    }
+
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
 }
 

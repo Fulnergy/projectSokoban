@@ -93,7 +93,7 @@ public class GridComponent extends JComponent {
     public Box removeBoxFromGrid() {
         this.remove(this.box);//remove box component from grid component
         Box b = this.box;
-        this.box = null;//set the hero attribute to null
+        this.box = null;//set the box attribute to null
         this.revalidate();//Update component painting in real time
         this.repaint();
         return b;
