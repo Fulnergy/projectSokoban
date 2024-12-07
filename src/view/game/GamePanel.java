@@ -95,6 +95,11 @@ public class GamePanel extends ListenerPanel {
         this.stepLabel.setText(String.format("Step: %d", this.steps));
     }
 
+    public void repealMove(){
+        this.steps--;
+        this.stepLabel.setText(String.format("Step: %d", this.steps));
+    }
+
     public void setStepLabel(JLabel stepLabel) {
         this.stepLabel = stepLabel;
     }
@@ -107,5 +112,13 @@ public class GamePanel extends ListenerPanel {
 
     public GridComponent getGridComponent(int row, int col) {
         return grids[row][col];
+    }
+
+    @Override
+    public void repeal(){
+        System.out.print("repeal");
+        if(controller.repeal(hero.getRow(),hero.getCol())){
+            this.repealMove();
+        }
     }
 }
