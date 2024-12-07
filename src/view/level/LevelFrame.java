@@ -31,12 +31,14 @@ public class LevelFrame extends JFrame {
 
         level2Btn.addActionListener(l->{
             MapMatrix mapMatrix = new MapMatrix(new int[][]{
-                    {1, 1, 1, 1, 1, 0},
-                    {1, 20, 0, 0, 1, 1},
-                    {1, 0, 0, 2, 0, 1},
-                    {1, 0, 10, 10, 2, 1},
-                    {1, 1, 0, 1, 1, 1},
-                    {0, 1, 1, 1, 0, 0},
+                    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                    {1, 0, 0, 0, 0, 20, 0, 0, 0, 1},
+                    {1, 0, 0, 0, 0, 0, 0, 2, 0, 1},
+                    {1, 0, 0, 0, 0, 0, 10, 10, 2, 1},
+                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                    {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                    {0, 1, 1, 1, 1, 1, 1, 1, 1, 0}
             });
             GameFrame gameFrame = new GameFrame(600, 450, mapMatrix);
             this.setVisible(false);
